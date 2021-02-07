@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {FormControl, InputLabel, Select, MenuItem} from '@material-ui/core';
+import React from 'react';
+import {FormControl, Select, MenuItem} from '@material-ui/core';
 import t from '../../constants/translations.json';
 import { makeStyles } from '@material-ui/core/styles';
 import stylesObject from "./styles";
@@ -7,8 +7,7 @@ import stylesObject from "./styles";
 const useStyles = makeStyles(stylesObject);
 
 const Selector = ({onSelect, selected, data}) => {
-    const {_filter} = useStyles()
-    //const [filter, setFilter] = useState()
+    const {_filter} = useStyles();
 
     return (
         <FormControl variant="outlined" className={_filter}>
