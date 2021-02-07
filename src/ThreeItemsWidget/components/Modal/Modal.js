@@ -1,6 +1,5 @@
 import {createPortal} from 'react-dom'
 import React, {useState, memo} from 'react';
-import 'react-perfect-scrollbar/dist/css/styles.css';
 import CloseIcon from '@material-ui/icons/Close';
 import {Paper, Backdrop, Button, TextField, Checkbox, FormControlLabel} from '@material-ui/core';
 import t from '../../constants/translations.json';
