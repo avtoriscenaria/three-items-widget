@@ -12,7 +12,7 @@ export default function SelectedItems({items = [], main, updateElements})  {
     const [chosenElements, setChosenElements ] = useState(items)
 
     useEffect(() => {
-       console.log('update items', items, main)
+       //console.log('update items', items, main)
         setChosenElements(items)
     },[items])
 

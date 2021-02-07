@@ -13,6 +13,7 @@ const LS_CHOSEN_ELEMENTS = 'chosenElements';
 
 export default function ThreeItemsWidget()  {
     const {_container, _button_area} = useStyles()
+    const [ready, setReady] = useState(false)
     const [chosenElements, setChosenElements ] = useState([])
     const [elements, setElements ] = useState([])
     const [openModal, setOpenModal ] = useState(false)
@@ -20,13 +21,14 @@ export default function ThreeItemsWidget()  {
     useEffect(() => {
         let elementsFromLS = localStorage.getItem(LS_CHOSEN_ELEMENTS);
         if (elementsFromLS !== null) {
-            console.log('PARSE')
+            //console.log('PARSE')
             setChosenElements(JSON.parse(elementsFromLS))
         }
+        setReady(true)
         const elements = makeItemArr(1000, i => `Item ${i+1}`);
         setElements(elements)
 
-        console.log('mount', )
+        //console.log('mount')
     },[])
 
     const updateElements = (arr) => {
@@ -34,7 +36,7 @@ export default function ThreeItemsWidget()  {
         localStorage.setItem(LS_CHOSEN_ELEMENTS, JSON.stringify(arr));
     }
 
-    return (
+    return !ready ? null : (
         <div className={_container}>
             <SelectedItems items={chosenElements} main={'main'} updateElements={updateElements}/>
             <div className={_button_area}>
