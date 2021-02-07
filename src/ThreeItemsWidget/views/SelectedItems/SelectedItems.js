@@ -1,30 +1,40 @@
 import React, {useEffect, useState} from 'react';
 import stylesObject from './styles';
-import {Button} from "@material-ui/core";
 import t from '../../constants/translations.json';
 import {makeStyles} from "@material-ui/core/styles";
-import {makeItemArr} from "../../utils";
+import CloseIcon from '@material-ui/icons/Close';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 
 const useStyles = makeStyles(stylesObject);
 
-export default function SelectedItems()  {
+export default function SelectedItems({items = [], main, updateElements})  {
     const {_selected_items, _label, _items_row, _item} = useStyles()
-    const [chosenElements, setChosenElements ] = useState([])
-    const [elements, setElements ] = useState([])
+    const [chosenElements, setChosenElements ] = useState(items)
 
     useEffect(() => {
-        const elements = makeItemArr(1000, i => `Item ${i+1}`);
-        setElements(elements)
+       console.log('update items', items, main)
+        setChosenElements(items)
+    },[items])
 
-        console.log('mount', )
-    },[])
+    const deleteItem = (element) => {
+        updateElements(chosenElements.filter(el => el !== element))
+    };
 
     return (
         <div className={_selected_items}>
             <div className={_label}>{t.selected_items}</div>
             <div className={_items_row}>
                 {
-                    chosenElements.map(el => <div key={`${el}`} className={_item}>{el}</div>)
+                    chosenElements.length === 0 ? <SentimentVeryDissatisfiedIcon/> :
+                    chosenElements.map(el => (
+                        <div key={`${el}`} className={_item}>
+                            {el}
+                            <CloseIcon
+                                //style={{cursor: 'pointer'}}
+                                onClick={() => deleteItem(el)}
+                            />
+                        </div>
+                    ))
                 }
             </div>
         </div>

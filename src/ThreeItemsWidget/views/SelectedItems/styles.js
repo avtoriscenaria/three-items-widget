@@ -1,12 +1,9 @@
-import sizes from "../../constants/sizes";
-
-const {itemHeight} = sizes
-
 const stylesObject = (theme) => ({
     _selected_items: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        paddingBottom: 16
     },
     _label: {
         textAlign: 'left',
@@ -14,13 +11,28 @@ const stylesObject = (theme) => ({
         paddingBottom: 10
     },
     _items_row: {
-        minHeight: itemHeight,
+        minHeight: 32,
         display: 'flex',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
     },
     _item: {
+        backgroundColor: '#ececec',
         marginRight: 10,
-        height: itemHeight
+        height: 32,
+        width: 180,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 4,
+        '& > svg': {
+            cursor: 'pointer',
+            '&:hover': {
+                opacity: 0.6
+            }
+        },
+        '&:last-child': {
+            marginRight: 0
+        }
     }
 });
 

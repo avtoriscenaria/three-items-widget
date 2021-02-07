@@ -1,3 +1,3 @@
 export default {
-    itemHeight: 24
+    itemHeight: 32
 }
