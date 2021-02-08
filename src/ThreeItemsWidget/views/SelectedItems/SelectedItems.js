@@ -7,12 +7,11 @@ import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissa
 
 const useStyles = makeStyles(stylesObject);
 
-export default function SelectedItems({items = [], main, updateElements})  {
+export default function SelectedItems({items = [], updateElements})  {
     const {_selected_items, _label, _items_row, _item} = useStyles()
     const [chosenElements, setChosenElements ] = useState(items)
 
     useEffect(() => {
-       //console.log('update items', items, main)
         setChosenElements(items)
     },[items])
 

@@ -20,27 +20,29 @@ export default function ThreeItemsWidget()  {
 
     useEffect(() => {
         let elementsFromLS = localStorage.getItem(LS_CHOSEN_ELEMENTS);
+
         if (elementsFromLS !== null) {
             //console.log('PARSE')
             setChosenElements(JSON.parse(elementsFromLS))
         }
+
         setReady(true)
+
         const elements = makeItemArr(1000, i => `Item ${i+1}`);
         setElements(elements)
 
-        //console.log('mount')
     },[])
 
     const updateElements = (arr) => {
         setChosenElements(arr);
         localStorage.setItem(LS_CHOSEN_ELEMENTS, JSON.stringify(arr));
     }
-
+    //console.log(result)
     return !ready ? null : (
         <div className={_container}>
-            <SelectedItems items={chosenElements} main={'main'} updateElements={updateElements}/>
+            <SelectedItems items={chosenElements} updateElements={updateElements}/>
             <div className={_button_area}>
-                <Button variant="contained" color="primary" onClick={() => setOpenModal(!openModal)}>
+                <Button variant="contained" color="primary" onClick={() => setOpenModal(true)}>
                     {t.change}
                 </Button>
                 {
@@ -48,10 +50,9 @@ export default function ThreeItemsWidget()  {
                         <SentimentVerySatisfiedIcon/>
                 }
             </div>
-
             {
                 !openModal ? null :
-                    <Modal close={() => setOpenModal(!openModal)}
+                    <Modal close={() => setOpenModal(false)}
                            elements={elements}
                            chosenElements={chosenElements}
                            saveElements={updateElements}

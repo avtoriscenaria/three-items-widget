@@ -12,9 +12,8 @@ const Selector = ({onSelect, selected, data}) => {
     return (
         <FormControl variant="outlined" className={_filter}>
             <Select
-                className={''}
                 labelId="filter"
-                id="demo-simple-select-outlined"
+                id="simple-select-outlined"
                 value={selected}
                 onChange={e => onSelect(e.target.value)}
             >
