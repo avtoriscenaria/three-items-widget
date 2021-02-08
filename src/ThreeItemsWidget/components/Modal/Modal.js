@@ -98,7 +98,7 @@ const createItemData = memoize((elements, updatedElements, chooseElement, _item)
 }));
 
 const getElements = memoize((elements, search, filter) => ({
-        memoElements: elements.filter((v, i) => v.includes(search.trim()) && (filter === t.no_filter ? v : (i+1) > +filter.replace(/>/gmi, '')))
+        memoElements: elements.filter((v, i) => v.toLowerCase().includes(search.toLowerCase().trim()) && (filter === t.no_filter ? v : (i+1) > +filter.replace(/>/gmi, '')))
     })
 )
 
