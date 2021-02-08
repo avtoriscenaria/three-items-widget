@@ -7,6 +7,7 @@ import {makeItemArr} from "./utils";
 import Modal from "./components/Modal";
 import SelectedItems from "./views/SelectedItems";
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
+import ItemsSelector from "./views/ItemsSelector";
 
 const useStyles = makeStyles(stylesObject);
 const LS_CHOSEN_ELEMENTS = 'chosenElements';
@@ -52,11 +53,14 @@ export default function ThreeItemsWidget()  {
             </div>
             {
                 !openModal ? null :
-                    <Modal close={() => setOpenModal(false)}
-                           elements={elements}
-                           chosenElements={chosenElements}
-                           saveElements={updateElements}
-                    />
+                    <Modal close={() => setOpenModal(false)}>
+                        <ItemsSelector
+                            close={() => setOpenModal(false)}
+                            elements={elements}
+                            chosenElements={chosenElements}
+                            saveElements={updateElements}
+                        />
+                    </Modal>
             }
         </div>
     )
